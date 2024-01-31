@@ -49,6 +49,12 @@ return require('packer').startup(function(use)
 
         use { "catppuccin/nvim", as = "catppuccin" },
 
+        use { 'olimorris/onedarkpro.nvim', as = 'onedarkpro' },
+
+        use { 'ellisonleao/gruvbox.nvim', as = 'gruvbox' },
+
+        use { 'Mofiqul/dracula.nvim', as = 'dracula' },
+
         use('gennaro-tedesco/nvim-peekup')
     }
     use {
