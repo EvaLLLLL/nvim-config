@@ -120,6 +120,15 @@ ins_left {
     end,
 }
 
+ins_right { 'location' }
+
+ins_right {
+    -- filesize component
+    'filesize',
+    cond = conditions.buffer_not_empty,
+    color = { gui = 'bold' },
+}
+
 ins_right {
     -- Lsp server name .
     function()
@@ -137,35 +146,9 @@ ins_right {
         end
         return msg
     end,
-    icon = 'LSP:',
-    color = { fg = colors.magenta, gui = 'bold' },
+    -- icon = 'LSP:',
+    color = { fg = colors.magenta, gui = 'bold' }
 }
-
-ins_right {
-    -- filesize component
-    'filesize',
-    cond = conditions.buffer_not_empty,
-    color = { fg = colors.green, gui = 'bold' },
-}
-
--- Add components to right sections
-ins_right {
-    'o:encoding',       -- option component same as &encoding in viml
-    fmt = string.upper, -- I'm not sure why it's upper case either ;)
-    cond = conditions.hide_in_width,
-    color = { fg = colors.green, gui = 'bold' },
-}
-
-ins_right {
-    'fileformat',
-    fmt = string.upper,
-    icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-    color = { fg = colors.green, gui = 'bold' },
-}
-
-ins_right { 'location' }
-
-ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 -- Now don't forget to initialize lualine
 lualine.setup(config)
