@@ -3,4 +3,4 @@ require("dracula").setup({
     italic_comment = true
 })
 
-vim.cmd("colorscheme dracula")
+-- vim.cmd("colorscheme dracula")

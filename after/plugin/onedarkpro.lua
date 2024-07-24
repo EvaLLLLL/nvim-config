@@ -1,8 +1,8 @@
 require("onedarkpro").setup({
     options = {
         cursorline = true,
-        transparency = false
+        transparency = true
     }
 })
 
--- vim.cmd("colorscheme onedark")
+vim.cmd("colorscheme onedark")

@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -43,9 +43,16 @@ return require('packer').startup(function(use)
         },
 
         use {
-            'nvim-lualine/lualine.nvim',
-            'nvim-tree/nvim-web-devicons'
+            'numToStr/Comment.nvim',
+            config = function()
+                require('Comment').setup()
+            end
         },
+
+        -- use {
+        --    'nvim-lualine/lualine.nvim',
+        --    'nvim-tree/nvim-web-devicons'
+        --  },
 
         use { "catppuccin/nvim", as = "catppuccin" },
 
@@ -55,7 +62,11 @@ return require('packer').startup(function(use)
 
         use { 'Mofiqul/dracula.nvim', as = 'dracula' },
 
-        use('gennaro-tedesco/nvim-peekup')
+        use { 'loctvl842/monokai-pro.nvim', as = 'monokai-pro' },
+
+        use { 'ribru17/bamboo.nvim', as = 'bamboo' },
+
+        use { "neanias/everforest-nvim", as = 'everforest' }
     }
     use {
         "windwp/nvim-autopairs",
