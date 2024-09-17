@@ -21,6 +21,7 @@ return {
             magenta  = '#c678dd',
             blue     = '#51afef',
             red      = '#ec5f67',
+            white    = '#ffffff'
         }
 
         local conditions = {
@@ -82,13 +83,13 @@ return {
             table.insert(config.sections.lualine_x, component)
         end
 
-        ins_left {
-            function()
-                return '▊'
-            end,
-            color = { fg = colors.blue }, -- Sets highlighting of component
-            padding = { left = 0, right = 1 }, -- We don't need space before this
-        }
+        -- ins_left {
+        --     function()
+        --         return '▊'
+        --     end,
+        --     color = { fg = colors.blue }, -- Sets highlighting of component
+        --     padding = { left = 0, right = 1 }, -- We don't need space before this
+        -- }
 
         ins_left {
             -- mode component
@@ -121,7 +122,7 @@ return {
                 }
                 return { fg = mode_color[vim.fn.mode()] }
             end,
-            padding = { right = 1 },
+            padding = { left = 1, right = 1 },
         }
 
         ins_left {
@@ -133,7 +134,7 @@ return {
         ins_left {
             'filename',
             cond = conditions.buffer_not_empty,
-            color = { fg = colors.magenta, gui = 'bold' },
+            color = { fg = colors.white, gui = 'bold' },
         }
 
         ins_left { 'location' }
@@ -176,12 +177,12 @@ return {
                 end
                 return msg
             end,
-            color = { fg = '#ffffff', gui = 'bold' },
+            color = { fg = colors.magenta, gui = 'bold' },
         }
 
         -- Add components to right sections
         ins_right {
-            'o:encoding', -- option component same as &encoding in viml
+            'o:encoding',       -- option component same as &encoding in viml
             fmt = string.upper, -- I'm not sure why it's upper case either ;)
             cond = conditions.hide_in_width,
             color = { fg = colors.green, gui = 'bold' },
@@ -212,13 +213,13 @@ return {
             cond = conditions.hide_in_width,
         }
 
-        ins_right {
-            function()
-                return '▊'
-            end,
-            color = { fg = colors.blue },
-            padding = { left = 1 },
-        }
+        -- ins_right {
+        --     function()
+        --         return '▊'
+        --     end,
+        --     color = { fg = colors.blue },
+        --     padding = { left = 1 },
+        -- }
 
         -- Now don't forget to initialize lualine
         lualine.setup(config)
