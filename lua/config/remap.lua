@@ -7,6 +7,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<leader>bx", ":bw<CR>")
 vim.keymap.set("n", "<leader>ka", ":bufdo bd<CR>")
 
+vim.keymap.set("n", "<C-a>", "^")
+vim.keymap.set("n", "<C-e>", "$")
+
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
