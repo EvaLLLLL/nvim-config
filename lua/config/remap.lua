@@ -20,3 +20,5 @@ vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("n", "<leader>ud", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>nN", ":set rnu<CR>")
 vim.keymap.set("n", "<leader>nn", ":set rnu!<CR>")
+
+vim.keymap.set("n", "<leader>q", ":wq!<CR>")
