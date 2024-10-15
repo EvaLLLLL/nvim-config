@@ -11,7 +11,7 @@ return {
 
             api.config.mappings.default_on_attach(bufnr)
 
-            vim.keymap.set('n', '<C-f>', api.tree.toggle, {})
+            vim.keymap.set('n', '<leader>e', api.tree.toggle, {})
         end
 
         require("nvim-tree").setup {
