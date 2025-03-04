@@ -99,7 +99,7 @@ else
             ins_left {
                 -- mode component
                 function()
-                    return ''
+                    return '</>'
                 end,
                 color = function()
                     -- auto change color according to neovims mode
@@ -131,25 +131,33 @@ else
             }
 
             ins_left {
-                -- filesize component
-                'filesize',
-                cond = conditions.buffer_not_empty,
-            }
-
-            ins_left {
                 'filename',
                 cond = conditions.buffer_not_empty,
                 color = { fg = colors.white, gui = 'bold' },
             }
 
-            ins_left { 'location' }
+            ins_left {
+                'branch',
+                icon = '',
+                color = { fg = colors.violet, gui = 'bold' },
+            }
 
-            ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+            ins_left {
+                'diff',
+                -- Is it me or the symbol for modified us really weird
+                symbols = { added = '+', modified = '*', removed = '-' },
+                diff_color = {
+                    added = { fg = colors.green },
+                    modified = { fg = colors.orange },
+                    removed = { fg = colors.red },
+                },
+                cond = conditions.hide_in_width,
+            }
 
             ins_left {
                 'diagnostics',
                 sources = { 'nvim_diagnostic' },
-                symbols = { error = ' ', warn = ' ', info = ' ' },
+                symbols = { error = '', warn = '', info = '' },
                 diagnostics_color = {
                     error = { fg = colors.red },
                     warn = { fg = colors.yellow },
@@ -186,6 +194,10 @@ else
             }
 
             -- Add components to right sections
+            ins_right { 'location' }
+
+            ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+
             ins_right {
                 'o:encoding',       -- option component same as &encoding in viml
                 fmt = string.upper, -- I'm not sure why it's upper case either ;)
@@ -201,21 +213,9 @@ else
             }
 
             ins_right {
-                'branch',
-                icon = '',
-                color = { fg = colors.violet, gui = 'bold' },
-            }
-
-            ins_right {
-                'diff',
-                -- Is it me or the symbol for modified us really weird
-                symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
-                diff_color = {
-                    added = { fg = colors.green },
-                    modified = { fg = colors.orange },
-                    removed = { fg = colors.red },
-                },
-                cond = conditions.hide_in_width,
+                -- filesize component
+                'filesize',
+                cond = conditions.buffer_not_empty,
             }
 
             -- ins_right {
