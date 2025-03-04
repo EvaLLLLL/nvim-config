@@ -6,7 +6,7 @@
 --         local tokyonight = require("tokyonight")
 --
 --         tokyonight.setup({
---             transparent = true,
+--            transparent = true,
 --             style = "night",
 --             cache = true,
 --
