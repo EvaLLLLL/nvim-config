@@ -14,7 +14,6 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 
 vim.keymap.set("n", "<leader>ls", ":w!<CR>")
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")
 
 vim.keymap.set("n", "<leader>ud", vim.cmd.UndotreeToggle)
