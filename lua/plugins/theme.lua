@@ -1,21 +1,15 @@
-if vim.g.vscode
-then
-    return {}
-else
-    return {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            local tokyonight = require("tokyonight")
+return {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+        require("catppuccin").setup({
+            transparent_background = true,
+            background = {
+                dark = "mocha"
+            }
+        })
 
-            tokyonight.setup({
-                style = "night",
-                transparent = true,
-                cache = true,
-            })
-
-            vim.cmd.colorscheme("tokyonight")
-        end
-    }
-end
+        vim.cmd.colorscheme "catppuccin"
+    end
+}
