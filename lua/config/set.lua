@@ -20,7 +20,7 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 
 vim.opt.termguicolors = true
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
