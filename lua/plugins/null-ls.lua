@@ -15,6 +15,13 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format code" })
+        vim.keymap.set("n", "<leader>lf", function()
+            vim.lsp.buf.format({
+                filter = function(client)
+                    return client.name == "null-ls"
+                end,
+            })
+        end, { desc = "Format code" })
     end,
 }
+
