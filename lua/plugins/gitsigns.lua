@@ -44,11 +44,26 @@ else
                     map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
                     map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
                     map('n', '<leader>hd', gitsigns.diffthis)
-                    map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
+                    -- map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
                     map('n', '<leader>td', gitsigns.toggle_deleted)
+                    vim.keymap.set("n", "<leader>hD", function()
+                        -- Text object
+                        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
-                    -- Text object
-                    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+                        -- Exit diff mode in all windows
+                        vim.cmd("windo diffoff")
+
+                        -- Close the window showing the original (unchanged) version
+                        for _, win in ipairs(vim.api.nvim_list_wins()) do
+                            local buf = vim.api.nvim_win_get_buf(win)
+                            local name = vim.api.nvim_buf_get_name(buf)
+
+                            if name:match("^gitsigns://") then
+                                vim.api.nvim_win_close(win, true)
+                                break
+                            end
+                        end
+                    end, { desc = "Exit Gitsigns diff mode and close original file window" })
                 end
             }
         end
