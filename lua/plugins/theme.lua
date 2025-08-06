@@ -1,11 +1,21 @@
 return {
-    "bluz71/vim-moonfly-colors",
-    name = "moonfly",
-    lazy = false,
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
-    config = function ()
-        vim.g.moonflyTransparent = true
-        vim.cmd.colorscheme "moonfly"
+    config = function()
+        require("catppuccin").setup({
+            flavour = "mocha",
+            background = {
+                light = "mocha",
+                dark = "mocha",
+            },
+            transparent_background = true,
+            float = {
+                transparent = true,
+                solid = false,
+            },
+        })
+
+        vim.cmd.colorscheme "catppuccin"
     end
 }
-
