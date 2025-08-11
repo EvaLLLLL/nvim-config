@@ -1,22 +1,27 @@
 return {
-    "ggandor/leap.nvim",
-    config = function()
-        require("leap").add_default_mappings()
-        -- Define equivalence classes for brackets and quotes, in addition to
-        -- the default whitespace group:
-        require('leap').opts.equivalence_classes = { ' \t\r\n', '([{', ')]}', '\'"`' }
-
-        -- Use the traversal keys to repeat the previous motion without
-        -- explicitly invoking Leap:
-        require('leap.user').set_repeat_keys('<enter>', '<backspace>')
-
-        -- Define a preview filter (skip the middle of alphanumeric words):
-        require('leap').opts.preview_filter =
-            function(ch0, ch1, ch2)
-                return not (
-                    ch1:match('%s') or
-                    ch0:match('%w') and ch1:match('%w') and ch2:match('%w')
-                )
-            end
-    end
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    keys = function()
+        local flash = require("flash")
+        return {
+            { "s",          mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+            { "S",          mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+            { "r",          mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
+            { "<C-f>",      mode = { "c" },           function() require("flash").toggle() end,     desc = "Toggle Flash Search" },
+            { "<leader>st", flash.treesitter,         desc = "Treesitter" },
+            { "<leader>ss", flash.treesitter_search,  desc = "Treesitter Search" },
+        }
+    end,
+    opts = {
+        modes = {
+            search = {
+                enabled = true, -- `/` 自动增强
+            },
+            char = {
+                enabled = true,
+                keys = { "f", "F", "t", "T" },
+                jump_labels = true,
+            },
+        },
+    },
 }
